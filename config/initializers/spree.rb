@@ -5,7 +5,8 @@ Spree.config do |config|
   # Core:
 
   # Default currency for new sites
-  config.currency = "KES"
+  country = Spree::Country.find_by_name('Kenya')
+  config.default_country_iso = country.id if country.present?
 
   # from address for transactional emails
   config.mails_from = "store@example.com"
@@ -90,3 +91,4 @@ Spree.user_class = "Spree::LegacyUser"
 # the class name:
 #
 # Spree::UserLastUrlStorer.rules << 'Spree::UserLastUrlStorer::Rules::AuthenticationRule'
+Spree::Config.currency = "KES"
